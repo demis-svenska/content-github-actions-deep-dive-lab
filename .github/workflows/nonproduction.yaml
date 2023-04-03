@@ -1,6 +1,7 @@
 name: non production environment 
-on-push:
-  branches: ["feature-initial-page"]
+on:
+  push:
+    branches: ["feature-initial-page"]
 jobs:
   deploy:
     runs-on: ubuntu-latest
