@@ -2,11 +2,11 @@ name: non production environment
 on:
   push:
     branches: ["feature-initial-page"]
+env:
+  bucket_name: cfst-3457-2a87aa6b679b7799385e61cbf-nonprodbucket-d8s0awa43td2
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      bucket_name: cfst-3457-2a87aa6b679b7799385e61cbf-nonprodbucket-d8s0awa43td2
     steps:
       - uses: actions/checkout@v3
       - uses: aws-actions/setup-sam@v2
@@ -18,5 +18,5 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
       - name: copy buckets
-        run: aws s3 cp . s3://${{bucket_name}}/
+        run: aws s3 cp . s3://$bucket_name/
       
